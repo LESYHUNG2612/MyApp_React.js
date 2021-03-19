@@ -1,10 +1,22 @@
 {
-    "products" :[
-        {
-            "id" : 1,
-            "name" : "Iphone 6",
-            "price" : 500,
-            "status" : true
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone 6",
+      "price": 500,
+      "status": false
+    },
+    {
+      "name": "Iphone 7",
+      "price": "700",
+      "status": true,
+      "id": 3
+    },
+    {
+      "id": 5,
+      "name": "Oppo F1s",
+      "price": "600",
+      "status": true
+    }
+  ]
 }

@@ -1,26 +1,35 @@
-var initialState =[
-    {
-        id : 1,
-        name : "Iphone 6",
-        price : 4000000,
-        status : true
-    },
-    {
-        id : 1,
-        name : "Iphone 8 Plus",
-        price : 8000000,
-        status : false
-    },
-    {
-        id : 1,
-        name : "Iphone X",
-        price : 12000000,
-        status : false
-    }
-];
+import * as Types from './../constants/ActionTypes';
 
+var initialState =[];
+
+
+var findIndex =(products,id) =>{
+    var result = -1;
+    products.forEach((products,index) => {
+        if(products.id === id){
+            result = index;
+        }
+    });
+    return result;
+}
 const products = (state = initialState,action) =>{
+    var index = -1;
+    var {id,product} = action;
     switch(action.type){
+        case Types.FETCH_PRODUCT:
+            state = action.product;
+            return[...state];
+        case Types.DELETE_PRODUCT:
+            index = findIndex(state,id);
+            state.splice(index,1);
+            return[...state];
+        case Types.ADD_PRODUCT:
+            state.push(action.product);
+            return[...state];
+        case Types.UPDATE_PRODUCT:
+            index = findIndex(state,product.id);
+            state[index] = product;
+            return[...state];
         default : return [...state];
     }
 };
